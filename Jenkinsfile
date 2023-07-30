@@ -12,7 +12,7 @@ pipeline {
         stage('Build') {
             steps {
                 // Build your project (e.g., Maven build)
-                sh 'mvn clean package'
+                sh 'mvn clean package --quiet'
             }
         }
 

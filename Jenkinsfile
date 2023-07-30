@@ -12,7 +12,13 @@ pipeline {
         stage('Build') {
             steps {
                 // Build your project (e.g., Maven build)
-                sh 'mvn clean package'
+                echo "----------Resolving Maven Dependencies----------"
+                sh 'mvn dependency:resolve --quiet'
+                echo ""
+
+                echo "----------Building Maven Project----------"
+                sh 'mvn clean package --quiet'
+                echo ""
             }
         }
 
@@ -20,13 +26,6 @@ pipeline {
             steps {
                 // Run tests (if applicable)
                 sh 'mvn test'
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                // Deploy your application (e.g., to a server)
-                // Add deployment steps here
             }
         }
     }

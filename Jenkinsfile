@@ -14,11 +14,11 @@ pipeline {
                 // Build your project (e.g., Maven build)
                 echo "----------Resolving Maven Dependencies----------"
                 sh 'mvn dependency:resolve --quiet'
-                echo
+                echo ""
 
                 echo "----------Building Maven Project----------"
                 sh 'mvn clean package --quiet'
-                echo
+                echo ""
             }
         }
 
